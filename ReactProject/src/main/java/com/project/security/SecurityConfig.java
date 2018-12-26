@@ -1,5 +1,6 @@
 package com.project.security;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,7 +20,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// TODO Auto-generated method stub
 		http.authorizeRequests()
 			//.antMatchers("/**").hasRole("ADMIN");
-			.antMatchers("/").permitAll();
+			.antMatchers("/").permitAll()
+			.antMatchers(HttpMethod.POST, "/api/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/api/**").permitAll()
+            .and()
+            .csrf().disable();
 	}
 	
 }

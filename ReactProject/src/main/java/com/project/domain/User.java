@@ -32,7 +32,6 @@ public class User {
 	
 	@Column(name = "password")
 	@Length(min = 5, message = "*Your password must have at least 5 characters")
-	@Transient
 	private String password;
 	
 	@Column(name ="name")
